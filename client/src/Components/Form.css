@@ -1,0 +1,27 @@
+/* Form control container styling */
+.form-control {
+    margin: 1rem 0;
+}
+
+/* Style for labels, inputs, and textareas within form control */
+.form-control label,
+.form-control input,
+.form-control textarea {
+    display: block;
+    width: 100%;
+}
+
+/* Input and textarea styling */
+.form-control input,
+.form-control textarea {
+    border: 1px solid #3b3b02; /* Darken the border color for better contrast */
+    font: inherit;
+    border-radius: 4px; /* Slightly round the corners */
+    padding: 0.5rem; /* Add some padding for better spacing */
+}
+
+/* Input and textarea focus styling */
+.form-control input:focus,
+.form-control textarea:focus {
+    outline-color: #72ac99; /* Set a specific outline color on focus */
+}
