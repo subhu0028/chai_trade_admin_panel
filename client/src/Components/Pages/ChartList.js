@@ -1,10 +1,19 @@
 // ChartList.js
-import React from "react";
+import React, { useState, useEffect } from "react";
 import '../List.css';
 import '../Main.css';
 import '../Form.css';
 
-function ChartList({ charts }) {
+import axios from "../../api/axiosConfig.js";
+
+function ChartList() {
+
+	const [charts, setCharts] = useState([]);
+	useEffect(() => {
+		axios.get("/charts/getCharts").then((res) => setCharts(res.data.data));
+	}, []);
+
+
 	return (
 		<main>
 			{charts.length > 0 ? (

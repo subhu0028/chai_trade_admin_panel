@@ -1,9 +1,19 @@
 // ContactList.js
-import React from "react";
+import React, { useState, useEffect } from "react";
 import '../Main.css';
 import '../List.css';
+import axios from "../../api/axiosConfig.js";
 
-function ContactList({ contacts }) {
+function ContactList() {
+
+
+	const [contacts, setContacts] = useState([]);
+	useEffect(() => {
+		axios.get("/contacts/getContacts").then((res) => setContacts(res.data.data));
+	}, []);
+
+
+
 	return (
 		<main>
 			{contacts.length > 0 ? (

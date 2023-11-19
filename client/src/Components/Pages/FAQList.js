@@ -1,9 +1,18 @@
 // FAQList.js
-import React from "react";
+import React, { useState, useEffect } from "react";
 import '../Main.css';
 import '../List.css';
 
-function FAQList({ faqs }) {
+import axios from "../../api/axiosConfig.js";
+
+function FAQList() {
+
+	const [faqs, setFaqs] = useState([]);
+	useEffect(() => {
+		axios.get("/faqs/getFaqs").then((res) => setFaqs(res.data.data));
+	}, []);
+
+
 	return (
 		<main>
 			{faqs.length > 0 ? (

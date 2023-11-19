@@ -1,9 +1,17 @@
 // FeatureList.js
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import '../Main.css';
 import '../List.css';
 
-function FeatureList({ features }) {
+import axios from "../../api/axiosConfig.js";
+
+function FeatureList() {
+
+	const [features, setFeatures] = useState([]);
+	useEffect(() => {
+		axios.get("/features/getFeatures").then((res) => setFeatures(res.data.data));
+	}, []);
+
 	const [searchText, setSearchText] = useState("");
 
 	const handleSearchChange = (e) => {
