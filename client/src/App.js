@@ -19,6 +19,7 @@ import UserList from "./Components/Pages/UserList";
 // client/src/App.js
 import { useState, useEffect } from "react";
 import Axios from "axios";
+import NavigationHeader from "./Components/NavigationHeader";
 
 const App = () => {
 	const [users, setUsers] = useState([]);
@@ -46,61 +47,32 @@ const App = () => {
 
 	return (
 		<div>
-			<h1></h1>
-			<BlogList blogs={blogs} />
+			<BrowserRouter>
+				<Routes>
+					<Route path="/" element={<Layout></Layout>}></Route>
+					<Route index element={<UserList />} />
+					<Route path="/users" element={<UserList users={users} />} />
+					<Route path="/mentors" element={<MentorList mentors={mentors} />} />
+					<Route path="/blogs" element={<BlogList blogs={blogs} />} />
+					<Route
+						path="/applications"
+						element={<ApplicationList applications={applications} />}
+					></Route>
+					<Route path="/faqs" element={<FAQList faqs={faqs} />}></Route>
+					<Route
+						path="/features"
+						element={<FeatureList features={features} />}
+					></Route>
+					<Route path="/charts" element={<ChartList charts={charts} />}></Route>
+					<Route
+						path="/contacts"
+						element={<ContactList contacts={contacts} />}
+					></Route>
+					{/* Add more routes for your other pages */}
+				</Routes>
+			</BrowserRouter>
 		</div>
 	);
 };
 
 export default App;
-
-// export default function App() {
-// 	return (
-// 		<BrowserRouter>
-// 			<Routes>
-// 				<Route path="/" element={<Layout></Layout>}></Route>
-// 				<Route index element={<UserList />} />
-// 				<Route path="/users" element={<UserList />} />
-// 				<Route path="/mentors" element={<MentorList />} />
-// 				<Route path="/blogs" element={<BlogList />} />
-// 				<Route path="/applications" element={<ApplicationList />}></Route>
-// 				<Route path="/faqs" element={<FAQList />}></Route>
-// 				<Route path="/features" element={<FeatureList />}></Route>
-// 				<Route path="/charts" element={<ChartList />}></Route>
-// 				<Route path="/contacts" element={<ContactList />}></Route>
-// 				{/* Add more routes for your other pages */}
-// 			</Routes>
-// 		</BrowserRouter>
-// 	);
-// }
-
-// const root = ReactDOM.createRoot(document.getElementById("root"));
-// root.render(<App />);
-
-// import React from 'react';
-// import FeatureList from './Components/Pages/FeatureList';
-// // import AdminDashboard from './Components/Pages/AdminDashboard';
-
-// const App = () => {
-//   // Replace this with your actual feature data
-//   const features = [
-//     // Sample feature data
-//     {
-//       _id: 1,
-//       mentorName: 'Mentor Name 1',
-//       mentorImage: 'mentor-image-1.jpg',
-//       title: 'Feature Title 1',
-//       content: 'Feature Content 1',
-//     },
-//     // Add more feature entries as needed
-//   ];
-
-//   return (
-//     <div>
-//       {/* Other components or content */}
-//       <FeatureList features={features} />
-//     </div>
-//   );
-// };
-
-// export default App;
